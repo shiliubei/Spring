@@ -1,10 +1,12 @@
 package Spring.domain;
+import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity // This tells Hibernate to make a table out of this class
+@Table(name = "words")
 public class Word {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -20,8 +22,10 @@ public class Word {
     }
 
 
-
+    @Column(name = "text", length = 30, nullable = false)
     private String text;
+
+    @Column(name = "translation", length = 30, nullable = false)
     private String translation;
 
     public Integer getId() {
