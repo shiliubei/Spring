@@ -24,7 +24,7 @@ public class ListController {
     }
     @PostMapping
     public String add ( @RequestParam String list_name, Map <String, Object> model){
-       List list = new List();
+       List list = new List(list_name);
         listsRepo.save(list);
         Iterable<List> lists = listsRepo.findAll();
         model.put("lists", lists);

@@ -13,11 +13,14 @@ import java.util.Set;
 public class List {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer list_id;
+    private Integer id;
 
-    public List() {
+    public List( ) {
     }
 
+    public List(String list_name) {
+        this.list_name = list_name;
+    }
     @Column(name = "list_name", length = 30, nullable = false)
     private String list_name;
 
