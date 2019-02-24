@@ -6,13 +6,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>List　of lists</h1>
+<h1>Word List</h1>
 <a href="addWord">Add word</a>
 <br/><br/>
 <div>
 <form method="POST">
 
-    <input type="list_name" name = "list_name" plasholder = "list_name"/>
+    <input type="text" name = "text" plasholder = "text"/>
+    <input type="text" name = "translation" plasholder = "text"/>
     <button type ="submit"> Add </button>
 
 </form>
@@ -20,12 +21,13 @@
 <div>
     <table border="1">
         <tr>
-            <th>List name</th>
+            <th>Word</th>
+            <th>Translation</th>
         </tr>
-        <tr th:each="list : ${lists}">
-            <td th:utext="${list.list_name}">...</td>
+        <tr th:each="word : ${words}">
+            <td th:utext="${word.text}">...</td>
+            <td th:utext="${word.translation}">...</td>
         </tr>
-
     </table>
 </div>
 </body>

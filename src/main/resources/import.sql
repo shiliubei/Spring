@@ -1,0 +1,1 @@
+INSERT INTO words  VALUES (1,'手机','мобильныйы телефон');
