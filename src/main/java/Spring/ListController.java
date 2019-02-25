@@ -23,8 +23,8 @@ public class ListController {
         return "main";
     }
     @PostMapping
-    public String add ( @RequestParam String list_name, Map <String, Object> model){
-       List list = new List(list_name);
+    public String add ( @RequestParam String name, Map <String, Object> model){
+       List list = new List(name);
         listsRepo.save(list);
         Iterable<List> lists = listsRepo.findAll();
         model.put("lists", lists);

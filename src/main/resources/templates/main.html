@@ -12,18 +12,20 @@
 <div>
 <form method="POST">
 
-    <input type="list_name" name = "list_name" plasholder = "list_name"/>
+    <input type="name" name = "name" plasholder = "name"/>
     <button type ="submit"> Add </button>
 
 </form>
 </div>
+<br/><br/>
 <div>
     <table border="1">
         <tr>
             <th>List name</th>
         </tr>
         <tr th:each="list : ${lists}">
-            <td th:utext="${list.list_name}">...</td>
+            <td th:utext="${list.name}">...</td>
+
         </tr>
 
     </table>

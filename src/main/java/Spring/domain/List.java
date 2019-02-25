@@ -18,21 +18,23 @@ public class List {
     public List( ) {
     }
 
-    public List(String list_name) {
-        this.list_name = list_name;
+    public List(String name) {
+        this.name = name;
     }
-    @Column(name = "list_name", length = 30, nullable = false)
-    private String list_name;
+    @Column(name = "name", length = 30, nullable = false)
+    private String name;
 
+    // в шаблоне прописать
+    //<a th:href="list/{list.id}"> {list.name}</a>
     @ManyToMany
     private Set<Word> words = new HashSet<>();
 
-    public String getList_name() {
-        return list_name;
+    public String getName() {
+        return name;
     }
 
-    public void setList_name(String list_name) {
-        this.list_name = list_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
