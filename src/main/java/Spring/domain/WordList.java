@@ -1,5 +1,8 @@
 package Spring.domain;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,15 +13,15 @@ import java.util.Set;
 
 @Entity
 @Table(name = "lists")
-public class List {
+public class WordList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public List( ) {
+    public WordList( ) {
     }
 
-    public List(String name) {
+    public WordList(String name) {
         this.name = name;
     }
     @Column(name = "name", length = 30, nullable = false)

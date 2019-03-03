@@ -1,34 +1,28 @@
 package Spring;
 
-import Spring.domain.List;
-import Spring.repos.ListRepo;
+
+import Spring.domain.WordList;
+import Spring.repos.WordListRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class ListController {
+
     @Autowired
-    private ListRepo listsRepo;
+    private WordListRepo wordListRepo;
 
-    @GetMapping
-    public String main(Map<String, Object> model){
-        Iterable<List> lists = listsRepo.findAll();
-        model.put("lists", lists);
-        return "main";
+    @GetMapping("/word_list/{id}")
+    public String word_list (Map<String, Object> model, @PathVariable("id") Integer id) {
+        Optional<WordList> words = wordListRepo.findById(id);
+        model.put("words", words);
+        return "word_list";
     }
-    @PostMapping
-    public String add ( @RequestParam String name, Map <String, Object> model){
-       List list = new List(name);
-        listsRepo.save(list);
-        Iterable<List> lists = listsRepo.findAll();
-        model.put("lists", lists);
-        return "main";
-    }
-
+//    WordList list = wordListRepo.find(id);
+//model.put("list", list);
 }
