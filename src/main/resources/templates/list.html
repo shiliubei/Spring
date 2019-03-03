@@ -10,21 +10,12 @@
 <a href="addWord">Add word</a>
 <br/><br/>
 <div>
-<form method="POST">
-
-    <input type="text" name = "text" plasholder = "text"/>
-    <input type="text" name = "translation" plasholder = "text"/>
-    <button type ="submit"> Add </button>
-
-</form>
-</div>
-<div>
     <table border="1">
         <tr>
             <th>Word</th>
             <th>Translation</th>
         </tr>
-        <tr th:each="word : ${words}">
+        <tr th:each="word : ${list.words}">
             <td th:utext="${word.text}">...</td>
             <td th:utext="${word.translation}">...</td>
         </tr>
