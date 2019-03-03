@@ -19,10 +19,8 @@ public class ListController {
 
     @GetMapping("/word_list/{id}")
     public String word_list (Map<String, Object> model, @PathVariable("id") Integer id) {
-        Optional<WordList> words = wordListRepo.findById(id);
-        model.put("words", words);
-        return "word_list";
+        WordList word = wordListRepo.findById(id).get();
+        model.put("list", word);
+        return "list";
     }
-//    WordList list = wordListRepo.find(id);
-//model.put("list", list);
 }

@@ -1,8 +1,5 @@
 package Spring.domain;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,26 +15,28 @@ public class WordList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public WordList( ) {
+    @Column(name = "name", length = 30, nullable = false)
+    private String name;
+
+    @ManyToMany
+    private Set<Word> words;
+
+    public WordList() {
     }
 
     public WordList(String name) {
         this.name = name;
     }
-    @Column(name = "name", length = 30, nullable = false)
-    private String name;
 
-    // в шаблоне прописать
-    //<a th:href="list/{list.id}"> {list.name}</a>
-    @ManyToMany
-    private Set<Word> words = new HashSet<>();
+    public Integer getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Set<Word> getWords() {
+        return words;
     }
-
 }

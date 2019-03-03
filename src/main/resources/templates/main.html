@@ -24,7 +24,7 @@
             <th>List name</th>
         </tr>
         <tr th:each="wordList : ${lists}">
-            <td th:utext="${wordList.name}">...</td>
+            <td><a th:text="${wordList.name}" th:href="@{/word_list/{id}(id=${wordList.id})}">...</a></td>
 
         </tr>
 
