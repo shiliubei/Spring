@@ -1,4 +1,5 @@
 package Spring.domain;
+
 import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,10 @@ import javax.persistence.Table;
 @Table(name = "words")
 public class Word {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public Word(){
+    public Word() {
 
     }
 
