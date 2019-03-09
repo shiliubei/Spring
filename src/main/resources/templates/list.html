@@ -6,8 +6,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>Word List</h1>
-<a href="addWord">Add word</a>
+<h1> <td th:utext="${list.name}"></h1>
+<a href="add_word">Add word</a>
 <br/><br/>
 <div>
     <table border="1">
