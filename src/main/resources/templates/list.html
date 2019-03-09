@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1> <td th:utext="${list.name}"></h1>
-<a href="add_word">Add word</a>
+<a th:href="@{/word_list/{id}/add_word(id=${list.id})}">Add word</a>
 <br/><br/>
 <div>
     <table border="1">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,21 +27,20 @@ public class ListController {
     private WordRepo wordRepo;
 
     @GetMapping("/word_list/{id}")
-    public String word_list(Map<String, Object> model, @PathVariable("id") Integer id) {
-        WordList word = wordListRepo.findById(id).get();
+    public String word_list(Map<String, Object> model, @PathVariable("id") Integer listId) {
+        WordList word = wordListRepo.findById(listId).get();
         model.put("list", word);
         return "list";
     }
 
-    @GetMapping("/word_list/add_word")
-    public String add_word(Map<String, Object> model) {
-//        Iterable<Word> words = wordRepo.findAll();
-//        model.put("words", words);
+    @GetMapping("/word_list/{id}/add_word")
+    public String add_word(@PathVariable("id") Integer listId, Map<String, Object> model) {
+        model.put("wordList", wordListRepo.findById(listId).get());
         return "add_word";
     }
 
-    @PostMapping("/word_list/add_word/filter")
-    public String filter(@RequestParam final String filter, Map<String, Object> model) {
+    @PostMapping("/word_list/{id}/add_word/filter")
+    public String filter(@PathVariable("id") Integer listId, @RequestParam final String filter, Map<String, Object> model) {
         Iterable<Word> words;
 
         if (filter != null && !filter.isEmpty()) {
@@ -52,6 +52,7 @@ public class ListController {
 
         model.put("words", words);
         model.put("filter", filter);
+        model.put("wordList", wordListRepo.findById(listId).get());
         return "add_word";
     }
 }

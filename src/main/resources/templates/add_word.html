@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Add word</title>
     <div>Words to add</div>
-    <form method="post" action="/word_list/add_word/filter">
+    <!--/*@thymesVar id="wordList" type="Spring.domain.WordList"*/-->
+    <form method="post" th:action="@{/word_list/{id}/add_word/filter(id=${wordList.id})}">
         <input type="text" name="filter" th:value="${filter}">
         <button type="submit">find</button>
     </form>
