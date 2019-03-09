@@ -48,6 +48,7 @@ public class ListController {
         }
 
         model.put("words", words);
+        model.put("filter", filter);
         return "add_word";
     }
 }

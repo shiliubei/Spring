@@ -5,7 +5,7 @@
     <title>Add word</title>
     <div>Words to add</div>
     <form method="post" action="/word_list/add_word/filter">
-        <input type="text" name="filter">
+        <input type="text" name="filter" th:value="${filter}">
         <button type="submit">find</button>
     </form>
 
