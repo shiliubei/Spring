@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class ListController {
@@ -38,11 +40,12 @@ public class ListController {
     }
 
     @PostMapping("/word_list/add_word/filter")
-    public String filter(@RequestParam String filter, Map<String, Object> model) {
+    public String filter(@RequestParam final String filter, Map<String, Object> model) {
         Iterable<Word> words;
 
         if (filter != null && !filter.isEmpty()) {
-            words = wordRepo.findByTranslation(filter);
+            words = StreamSupport.stream(wordRepo.findAll().spliterator(), false)
+                    .filter(w -> w.getTranslation().contains(filter)).collect(Collectors.toList());
         } else {
             words = wordRepo.findAll();
         }
