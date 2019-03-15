@@ -14,10 +14,14 @@
             <tr>
                 <th>Word</th>
                 <th>Translation</th>
+                <th></th>
             </tr>
             <tr th:each="word : ${words}">
                 <td th:utext="${word.text}">...</td>
                 <td th:utext="${word.translation}">...</td>
+                <td> <form method="post" th:action="@{/word_list/{id}/add_word(id=${wordList.id})}">
+                    <input type="hidden" th:value="${word.id}">
+                    <button type = "submit">Add</button> </form></td>
             </tr>
         </table>
     </div>

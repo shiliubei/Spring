@@ -28,8 +28,9 @@ public class ListController {
         return "list";
     }
 
-    @RequestMapping(value = "/word_list/{id}/add_word", method = {RequestMethod.GET, RequestMethod.POST})
-    public String filter(@PathVariable("id") Integer listId, @RequestParam(name = "filter", required = false) final String filter, Map<String, Object> model) {
+    @RequestMapping(value = "/word_list/{id}/add_word", method = {RequestMethod.GET})
+    public String filter(@PathVariable("id") Integer listId, @RequestParam(name = "filter", required = false)
+        final String filter, Map<String, Object> model) {
         Iterable<Word> words;
 
         if (filter != null && !filter.isEmpty()) {
@@ -43,5 +44,16 @@ public class ListController {
         model.put("filter", filter);
         model.put("wordList", wordListRepo.findById(listId).get());
         return "add_word";
+    }
+
+    @RequestMapping(value = "/word_list/{list_id}/add_word", method = {RequestMethod.POST})
+    public String addWordToList (@PathVariable("list_id") Integer listId,
+                                 @PathVariable("word_id") Integer wordId,
+                                 @RequestParam(name = "addWordToList", required = false)
+                                     final String addWordToList, Map<String, Object> model){
+        //listsRepo.save(wordList);
+        model.put("addWordToList", wordId);
+        return "add_word";
+
     }
 }
