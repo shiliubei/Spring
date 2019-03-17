@@ -47,19 +47,17 @@ public class ListController {
         return "add_word";
     }
 
-    @RequestMapping(value = "/word_list/{list_id}/add_word/{word_id}",
+    @RequestMapping(value = "/word_list/{list_id}/add_word",
             method = {RequestMethod.POST})
     public String addWordToList
             (@PathVariable("list_id") Integer wordListId,  //переменная Id списка
-             @RequestParam Integer wordId,  //переменная Id слова
+             @RequestParam("word_id") Integer wordId,  //переменная Id слова
              Map<String, Object> model){
         WordList wordList = wordListRepo.findById(wordListId).get();
         Word word = wordRepo.findById(wordId).get();
         wordList.getWords().add(word);
         wordListRepo.save(wordList);
-        Iterable<Word> words = wordRepo.findAll();
-        model.put("words", words);
-        return "add_word";  //возвращается шаблон add_word
-
+        model.put("list", wordList);
+        return "list";
     }
 }
