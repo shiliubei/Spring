@@ -20,7 +20,7 @@
                 <td th:utext="${word.text}">...</td>
                 <td th:utext="${word.translation}">...</td>
                 <td> <form method="post" th:action="@{/word_list/{id}/add_word(id=${wordList.id})}">
-                    <input type="hidden" th:value="${word.id}">
+                    <input type="hidden" name="word_id" th:value="${word.Id}">
                     <button type = "submit">Add</button> </form></td>
             </tr>
         </table>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -46,14 +47,19 @@ public class ListController {
         return "add_word";
     }
 
-    @RequestMapping(value = "/word_list/{list_id}/add_word", method = {RequestMethod.POST})
-    public String addWordToList (@PathVariable("list_id") Integer listId,
-                                 @PathVariable("word_id") Integer wordId,
-                                 @RequestParam(name = "addWordToList", required = false)
-                                     final String addWordToList, Map<String, Object> model){
-        //listsRepo.save(wordList);
-        model.put("addWordToList", wordId);
-        return "add_word";
+    @RequestMapping(value = "/word_list/{list_id}/add_word/{word_id}",
+            method = {RequestMethod.POST})
+    public String addWordToList
+            (@PathVariable("list_id") Integer wordListId,  //переменная Id списка
+             @RequestParam Integer wordId,  //переменная Id слова
+             Map<String, Object> model){
+        WordList wordList = wordListRepo.findById(wordListId).get();
+        Word word = wordRepo.findById(wordId).get();
+        wordList.getWords().add(word);
+        wordListRepo.save(wordList);
+        Iterable<Word> words = wordRepo.findAll();
+        model.put("words", words);
+        return "add_word";  //возвращается шаблон add_word
 
     }
 }
