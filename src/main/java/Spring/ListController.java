@@ -22,6 +22,13 @@ public class ListController {
     @Autowired
     private WordRepo wordRepo;
 
+    @GetMapping("/word_list/{id}/train_words")
+    public String train_words (Map<String, Object> model, @PathVariable("id") Integer listId) {
+        WordList word = wordListRepo.findById(listId).get();
+        model.put("word", word);
+        return "train_words";
+    }
+
     @GetMapping("/word_list/{id}")
     public String word_list(Map<String, Object> model, @PathVariable("id") Integer listId) {
         WordList word = wordListRepo.findById(listId).get();

@@ -2,25 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Word List</title>
+    <title>Train words</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-
 </head>
 <body>
 
 
 <h1> <td th:utext="${list.name}"></h1>
-
-<form method="POST" th:action="@{/word_translation/{id}/train_words(id=${list.id})}">
-    <button type="submit">Train</button>
-</form>
 <br/><br/>
-
-<a th:href="@{/word_list/{id}/add_word(id=${list.id})}">Add word</a>
-<br/><br/>
-
-
-
 <div>
     <table border="1">
         <tr>
