@@ -11,7 +11,7 @@
 
 <h1> <td th:utext="${list.name}"></h1>
 
-<form method="POST" th:action="@{/word_translation/{id}/train_words(id=${list.id})}">
+<form method="POST" th:action="@{/word_list/{id}/train_words(id=${list.id})}">
     <button type="submit">Train</button>
 </form>
 <br/><br/>
