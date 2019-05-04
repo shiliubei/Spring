@@ -15,12 +15,17 @@ public class WordStatus {
     @OneToOne
     private Word word;
 
+    @OneToOne
+    private User user;
+
     public WordStatus() {
 
     }
 
-    public WordStatus(boolean hieroglyphTranslationTraining) {
+    public WordStatus(boolean hieroglyphTranslationTraining, Word word, User user) {
         this.hieroglyphTranslationTraining = hieroglyphTranslationTraining;
+        this.word = word;
+        this.user = user;
     }
 
     public Integer getId() {

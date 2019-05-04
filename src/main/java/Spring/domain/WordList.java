@@ -22,8 +22,12 @@ public class WordList {
     public WordList() {
     }
 
-    public WordList(String name) {
+    @OneToOne
+    private User user;
+
+    public WordList(String name, User user) {
         this.name = name;
+        this.user = user;
     }
 
     public Integer getId() {
