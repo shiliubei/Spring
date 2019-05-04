@@ -14,7 +14,6 @@ public class WordList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "name", length = 30, nullable = false)
     private String name;
 
     @ManyToMany

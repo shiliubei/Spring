@@ -22,11 +22,8 @@ public class Word {
         this.translation = translation;
     }
 
-
-    @Column(name = "text", length = 30, nullable = false)
     private String text;
 
-    @Column(name = "translation", length = 30, nullable = false)
     private String translation;
 
     public Integer getId() {
