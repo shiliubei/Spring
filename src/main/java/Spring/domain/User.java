@@ -1,10 +1,14 @@
 package Spring.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "users")
 public class User {
     @Id
-    private String login;
+    private int login;
 
     private String email;
 
@@ -14,13 +18,13 @@ public class User {
 
     }
 
-    public User(String login, String email, String name) {
+    public User(int login, String email, String name) {
         this.login = login;
         this.email = email;
         this.name = name;
     }
 
-    public String getLogin() {
+    public int getLogin() {
         return login;
     }
 

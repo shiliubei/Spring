@@ -1,7 +1,6 @@
 package Spring.domain;
 
 import javax.persistence.*;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,14 +15,15 @@ public class WordList {
 
     private String name;
 
+    @ManyToOne
+    private User user;
+
     @ManyToMany
     private Set<Word> words;
 
     public WordList() {
-    }
 
-    @OneToOne
-    private User user;
+    }
 
     public WordList(String name, User user) {
         this.name = name;

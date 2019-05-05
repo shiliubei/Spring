@@ -23,7 +23,7 @@ public class ListController {
     private WordRepo wordRepo;
 
     @PostMapping("/word_list/{id}/train_words")
-    public String train_words (Map<String, Object> model, @PathVariable("id") Integer listId) {
+    public String train_words(Map<String, Object> model, @PathVariable("id") Integer listId) {
         WordList wordList = wordListRepo.findById(listId).get();
         model.put("list", wordList); //В этой строке мы присваивае. Ключу list объект из переменной word,экземпляр класса WordList
         //Шаблонизатор использует этот Map в момент когда надо отрендерить шаблон.
@@ -39,8 +39,7 @@ public class ListController {
     }
 
     @RequestMapping(value = "/word_list/{id}/add_word", method = {RequestMethod.GET})
-    public String filter(@PathVariable("id") Integer listId, @RequestParam(name = "filter", required = false)
-        final String filter, Map<String, Object> model) {
+    public String filter(@PathVariable("id") Integer listId, @RequestParam(name = "filter", required = false) final String filter, Map<String, Object> model) {
         Iterable<Word> words;
 
         if (filter != null && !filter.isEmpty()) {
@@ -61,7 +60,7 @@ public class ListController {
     public String addWordToList
             (@PathVariable("list_id") Integer wordListId,  //переменная Id списка
              @RequestParam("word_id") Integer wordId,  //переменная Id слова
-             Map<String, Object> model){
+             Map<String, Object> model) {
         WordList wordList = wordListRepo.findById(wordListId).get();
         Word word = wordRepo.findById(wordId).get();
         wordList.getWords().add(word);
