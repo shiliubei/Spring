@@ -1,9 +1,13 @@
 package Spring.domain;
 
+import com.sun.javafx.geom.transform.Identity;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import static java.awt.font.TransformAttribute.IDENTITY;
 
 @Entity
 @Table(name = "users")

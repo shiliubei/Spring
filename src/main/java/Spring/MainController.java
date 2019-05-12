@@ -28,7 +28,7 @@ public class MainController {
         return "main";
     }
 
-    @PostMapping("/add_list")
+    @PostMapping("/")
     public String add(@RequestParam String name, Map<String, Object> model, Principal principal) {
         User user = userRepo.findByLogin(principal.getName());
         WordList wordList = new WordList(name, user);
