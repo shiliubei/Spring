@@ -1,6 +1,7 @@
 package Spring.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,7 +9,10 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
-    private int login;
+    @GeneratedValue
+    private Integer id;
+
+    private String login;
 
     private String email;
 
@@ -18,13 +22,13 @@ public class User {
 
     }
 
-    public User(int login, String email, String name) {
+    public User(String login, String email, String name) {
         this.login = login;
         this.email = email;
         this.name = name;
     }
 
-    public int getLogin() {
+    public String getLogin() {
         return login;
     }
 

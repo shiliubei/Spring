@@ -10,7 +10,7 @@ import java.util.Set;
 @Table(name = "lists")
 public class WordList {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
